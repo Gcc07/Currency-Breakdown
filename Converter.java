@@ -9,18 +9,26 @@ public class Converter {
     }
     public static void main(String[] args) {
         double dollar_amount = getDoubleInput("Enter a monetary amount (e.g., 67.67): ");
-        double cents = Math.round(dollar_amount * 100);
+        int cents = (int)(dollar_amount * 100);
 
-        String[] names = new String[ ]{"dollars", "quarters", "dimes", "nickels", "pennies"};
-        int[] money = new int[ ]{0,0,0,0,0};
-        int[] values = new int []{100,25,10,5,1};
-        for (int i = 0; i < money.length; i++) {
-            while ((cents - values[i]) >= 0) {
-            money[i] += 1;
-            cents -= values[i];
-            }
-            System.out.println(names[i] + ": " + money[i]);
+        final String[] money_names = new String[ ]{"dollars", "quarters", "dimes", "nickels", "pennies"};
+        final int[] CENTS_VALUES = new int []{100,25,10,5,1};
+        int[] money_values = new int[ ]{0,0,0,0,0};
+        money_values[0] = cents / CENTS_VALUES[0];
+        for (int i = 1; i < money_values.length; i++) {
+            money_values[i] = cents % CENTS_VALUES[i];
+            System.out.println(money_names[i] + ": " + money_values[i]);
         }
+
+        /* 
+        for (int i = 0; i < money_values.length; i++) {
+            while ((cents - CENTS_VALUES[i]) >= 0) {
+            money_values[i] += 1;
+            cents -= CENTS_VALUES[i];
+            }
+            System.out.println(money_names[i] + ": " + money_values[i]);
+        }
+        */
 
         /* Here is the other simpler version i made. WITHOUT ARRAYS. 
 
