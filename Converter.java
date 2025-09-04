@@ -10,7 +10,6 @@ public class Converter {
     public static void main(String[] args) {
         double dollar_amount = getDoubleInput("Enter a monetary amount (e.g., 67.67): ");
         int cents = (int)(dollar_amount * 100);
-        System.out.println(cents);
         final String[] money_names = new String[ ]{"dollars", "quarters", "dimes", "nickels", "pennies"};
         final int[] CENTS_VALUES = new int []{100,25,10,5,1};
         int[] money_values = new int[ ]{0,0,0,0,0};
@@ -19,7 +18,7 @@ public class Converter {
             cents = cents % CENTS_VALUES[i]; // remainder
             System.out.println(money_names[i] + ": " + money_values[i]);
         }
-        
+
         /* 
         for (int i = 0; i < money_values.length; i++) {
             while ((cents - CENTS_VALUES[i]) >= 0) {
